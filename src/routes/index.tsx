@@ -9,64 +9,64 @@ const products = [
   {
     name: 'عباءة الليل الفاخرة',
     cat: 'عبايات كلاسيك',
-    price: '12,000',
-    emoji: '🖤',
+    price: '300',
+    image: '/abaya-1.jpg',
     badge: 'جديد',
     desc: 'عباءة سوداء كلاسيكية من أجود أقمشة الكريب المزدوج، تتميز بقصّة سادة أنيقة تُناسب جميع المقاسات وتمنحكِ إطلالة راقية في كل وقت.',
   },
   {
     name: 'عباءة ذهب وليل',
     cat: 'عبايات مطرزة',
-    price: '18,500',
-    emoji: '✨',
+    price: '300',
+    image: '/abaya-2.jpg',
     badge: 'الأكثر طلبًا',
     desc: 'تصميم حصري يجمع بين الأسود الفاخر والتطريز الذهبي اليدوي على الأكمام والياقة، لتكوني مركز الاهتمام في أي مناسبة.',
   },
   {
     name: 'عباءة نجوم السهرة',
     cat: 'عبايات سهرة',
-    price: '22,000',
-    emoji: '🌙',
+    price: '300',
+    image: '/abaya-3.jpg',
     badge: 'حصري',
     desc: 'عباءة سهرة فاخرة مزينة بأحجار السواروفسكي اللامعة، مصممة خصيصًا للمناسبات الراقية والأفراح.',
   },
   {
     name: 'عباءة الصباح',
     cat: 'عبايات يومية',
-    price: '9,500',
-    emoji: '☀️',
+    price: '300',
+    image: '/abaya-1.jpg',
     badge: '',
     desc: 'عباءة عملية وأنيقة للاستخدام اليومي من قماش الجورجيت الخفيف، تمنحكِ الراحة والأناقة طوال اليوم.',
   },
   {
     name: 'عباءة الأميرة',
     cat: 'عبايات مطرزة',
-    price: '25,000',
-    emoji: '👑',
+    price: '300',
+    image: '/abaya-2.jpg',
     badge: 'VIP',
     desc: 'تحفة فنية من التطريز الحريري على القماش الأطلس الفاخر، تصميم لا يُضاهى للمناسبات الخاصة والأفراح.',
   },
   {
     name: 'عباءة الياسمين',
     cat: 'عبايات كلاسيك',
-    price: '11,000',
-    emoji: '🌸',
+    price: '300',
+    image: '/abaya-3.jpg',
     badge: '',
     desc: 'عباءة كلاسيكية بتفصيلة أنيقة على الأكمام والطوق، مناسبة للعمل والخروج اليومي.',
   },
   {
     name: 'عباءة قمر عدن',
     cat: 'عبايات سهرة',
-    price: '19,000',
-    emoji: '🌟',
+    price: '300',
+    image: '/abaya-1.jpg',
     badge: 'جديد',
     desc: 'إلهام من جمال عدن الساحلي، عباءة سهرة بلون أسود منجز بخيوط ذهبية رفيعة على الحواف.',
   },
   {
     name: 'عباءة الفراشة',
     cat: 'عبايات يومية',
-    price: '8,500',
-    emoji: '🦋',
+    price: '300',
+    image: '/abaya-3.jpg',
     badge: '',
     desc: 'عباءة يومية خفيفة بقصة واسعة مريحة، مثالية للطقس الدافئ مع الحفاظ على الأناقة.',
   },
@@ -83,7 +83,7 @@ function goTo(id: string) {
 }
 
 function orderNow(name: string, price: string) {
-  window.open(waLink(`السلام عليكم، أريد الاستفسار عن ${name} بسعر ${price} ريال`), '_blank')
+  window.open(waLink(`السلام عليكم، أريد الاستفسار عن ${name} بسعر ${price} ريال سعودي`), '_blank')
 }
 
 type Product = (typeof products)[0]
@@ -108,16 +108,16 @@ function ProductModal({
         <button className="modal-close" onClick={onClose}>
           ✕
         </button>
-        <div className="modal-emoji">{product.emoji}</div>
+        <img src={product.image} alt={product.name} className="modal-image" />
         <h3>{product.name}</h3>
         <div className="modal-cat">{product.cat}</div>
         <div className="modal-price">
-          <small>ر.ي</small> {product.price}
+          <small>ر.س</small> {product.price}
         </div>
         <p className="modal-desc">{product.desc}</p>
         <div className="modal-actions">
           <a
-            href={waLink(`السلام عليكم، أريد الاستفسار عن ${product.name} بسعر ${product.price} ريال`)}
+            href={waLink(`السلام عليكم، أريد الاستفسار عن ${product.name} بسعر ${product.price} ريال سعودي`)}
             target="_blank"
             rel="noreferrer"
             className="btn-wa-big"
@@ -150,9 +150,8 @@ function ProductsGrid({ filter }: { filter: string }) {
         {items.map((p) => (
           <div key={p.name} className="product-card" onClick={() => setModal(p)}>
             <div className="p-img">
-              <div className="p-img-pattern" />
+              <img src={p.image} alt={p.name} className="p-img-photo" />
               {p.badge && <div className="p-badge">{p.badge}</div>}
-              <span>{p.emoji}</span>
               <div className="p-hover-overlay">
                 <button
                   className="p-btn p-btn-main"
@@ -179,7 +178,7 @@ function ProductsGrid({ filter }: { filter: string }) {
               <div className="p-cat">{p.cat}</div>
               <div className="p-footer">
                 <div className="p-price">
-                  <small>ر.ي</small>
+                  <small>ر.س</small>
                   {p.price}
                 </div>
                 <button
@@ -320,7 +319,7 @@ function LujainDesign() {
                 goTo('#products')
               }}
             >
-              <div className="cat-bg" /><div className="cat-emoji">🖤</div><div className="cat-overlay" />
+              <div className="cat-bg" /><img src="/abaya-1.jpg" alt="عبايات كلاسيك" className="cat-img" /><div className="cat-overlay" />
               <div className="cat-content">
                 <div className="cat-label">الأكثر طلبًا</div>
                 <div className="cat-name">عبايات كلاسيك</div>
@@ -335,7 +334,7 @@ function LujainDesign() {
                 goTo('#products')
               }}
             >
-              <div className="cat-bg" /><div className="cat-emoji">✨</div><div className="cat-overlay" />
+              <div className="cat-bg" /><img src="/abaya-2.jpg" alt="عبايات مطرزة" className="cat-img" /><div className="cat-overlay" />
               <div className="cat-content">
                 <div className="cat-label">فاخر</div>
                 <div className="cat-name">عبايات مطرزة</div>
@@ -350,7 +349,7 @@ function LujainDesign() {
                 goTo('#products')
               }}
             >
-              <div className="cat-bg" /><div className="cat-emoji">🌙</div><div className="cat-overlay" />
+              <div className="cat-bg" /><img src="/abaya-3.jpg" alt="عبايات سهرة" className="cat-img" /><div className="cat-overlay" />
               <div className="cat-content">
                 <div className="cat-label">مناسبات</div>
                 <div className="cat-name">عبايات سهرة</div>
@@ -452,11 +451,11 @@ function LujainDesign() {
             <div className="section-rule" />
           </div>
           <div className="gallery-grid">
-            <div className="g-item"><div className="g-pattern" />🖤</div>
-            <div className="g-item"><div className="g-pattern" />✨</div>
-            <div className="g-item"><div className="g-pattern" />🌙</div>
-            <div className="g-item"><div className="g-pattern" />👑</div>
-            <div className="g-item"><div className="g-pattern" />💫</div>
+            <div className="g-item"><img src="/abaya-1.jpg" alt="عباءة" className="g-img" /></div>
+            <div className="g-item"><img src="/abaya-2.jpg" alt="عباءة" className="g-img" /></div>
+            <div className="g-item"><img src="/abaya-3.jpg" alt="عباءة" className="g-img" /></div>
+            <div className="g-item"><img src="/abaya-2.jpg" alt="عباءة" className="g-img" /></div>
+            <div className="g-item"><img src="/abaya-1.jpg" alt="عباءة" className="g-img" /></div>
           </div>
         </div>
       </section>
