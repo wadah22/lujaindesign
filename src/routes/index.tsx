@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 export const Route = createFileRoute('/')({
   component: LujainDesign,
@@ -11,6 +11,7 @@ const products = [
     cat: 'عبايات كلاسيك',
     price: '300',
     image: '/abaya-1.jpg',
+    images: ['/abaya-1.jpg', '/abaya-2.jpg', '/abaya-3.jpg'],
     badge: 'جديد',
     desc: 'عباءة سوداء كلاسيكية من أجود أقمشة الكريب المزدوج، تتميز بقصّة سادة أنيقة تُناسب جميع المقاسات وتمنحكِ إطلالة راقية في كل وقت.',
   },
@@ -19,6 +20,7 @@ const products = [
     cat: 'عبايات مطرزة',
     price: '300',
     image: '/abaya-2.jpg',
+    images: ['/abaya-2.jpg', '/abaya-1.jpg', '/abaya-nujoom.jpg'],
     badge: 'الأكثر طلبًا',
     desc: 'تصميم حصري يجمع بين الأسود الفاخر والتطريز الذهبي اليدوي على الأكمام والياقة، لتكوني مركز الاهتمام في أي مناسبة.',
   },
@@ -27,6 +29,7 @@ const products = [
     cat: 'عبايات سهرة',
     price: '300',
     image: '/abaya-nujoom.jpg',
+    images: ['/abaya-nujoom.jpg', '/abaya-3.jpg', '/abaya-1.jpg'],
     badge: 'حصري',
     desc: 'عباءة سهرة فاخرة مزينة بأحجار السواروفسكي اللامعة، مصممة خصيصًا للمناسبات الراقية والأفراح.',
   },
@@ -35,6 +38,7 @@ const products = [
     cat: 'عبايات يومية',
     price: '300',
     image: '/abaya-1.jpg',
+    images: ['/abaya-1.jpg', '/abaya-nujoom.jpg', '/abaya-2.jpg'],
     badge: '',
     desc: 'عباءة عملية وأنيقة للاستخدام اليومي من قماش الجورجيت الخفيف، تمنحكِ الراحة والأناقة طوال اليوم.',
   },
@@ -43,6 +47,7 @@ const products = [
     cat: 'عبايات مطرزة',
     price: '300',
     image: '/abaya-2.jpg',
+    images: ['/abaya-2.jpg', '/abaya-3.jpg', '/abaya-nujoom.jpg'],
     badge: 'VIP',
     desc: 'تحفة فنية من التطريز الحريري على القماش الأطلس الفاخر، تصميم لا يُضاهى للمناسبات الخاصة والأفراح.',
   },
@@ -51,6 +56,7 @@ const products = [
     cat: 'عبايات كلاسيك',
     price: '300',
     image: '/abaya-3.jpg',
+    images: ['/abaya-3.jpg', '/abaya-1.jpg', '/abaya-2.jpg'],
     badge: '',
     desc: 'عباءة كلاسيكية بتفصيلة أنيقة على الأكمام والطوق، مناسبة للعمل والخروج اليومي.',
   },
@@ -59,6 +65,7 @@ const products = [
     cat: 'عبايات سهرة',
     price: '300',
     image: '/abaya-1.jpg',
+    images: ['/abaya-1.jpg', '/abaya-3.jpg', '/abaya-nujoom.jpg'],
     badge: 'جديد',
     desc: 'إلهام من جمال عدن الساحلي، عباءة سهرة بلون أسود منجز بخيوط ذهبية رفيعة على الحواف.',
   },
@@ -67,6 +74,7 @@ const products = [
     cat: 'عبايات يومية',
     price: '300',
     image: '/abaya-3.jpg',
+    images: ['/abaya-3.jpg', '/abaya-nujoom.jpg', '/abaya-1.jpg'],
     badge: '',
     desc: 'عباءة يومية خفيفة بقصة واسعة مريحة، مثالية للطقس الدافئ مع الحفاظ على الأناقة.',
   },
@@ -88,6 +96,75 @@ function orderNow(name: string, price: string) {
 
 type Product = (typeof products)[0]
 
+function Lightbox({
+  images,
+  startIndex,
+  onClose,
+}: {
+  images: string[]
+  startIndex: number
+  onClose: () => void
+}) {
+  const [current, setCurrent] = useState(startIndex)
+
+  const goPrev = useCallback(() => {
+    setCurrent((i) => (i - 1 + images.length) % images.length)
+  }, [images.length])
+
+  const goNext = useCallback(() => {
+    setCurrent((i) => (i + 1) % images.length)
+  }, [images.length])
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') goNext()
+      if (e.key === 'ArrowRight') goPrev()
+    }
+    document.addEventListener('keydown', handleKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', handleKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose, goPrev, goNext])
+
+  return (
+    <div
+      className="lightbox-bg"
+      onClick={(e) => {
+        if ((e.target as HTMLElement).classList.contains('lightbox-bg')) onClose()
+      }}
+    >
+      <button className="lightbox-close" onClick={onClose}>✕</button>
+      <button className="lightbox-nav lightbox-prev" onClick={goPrev}>‹</button>
+      <div className="lightbox-content">
+        {images.map((img, i) => (
+          <img
+            key={img + i}
+            src={img}
+            alt=""
+            className={`lightbox-img ${i === current ? 'active' : ''}`}
+          />
+        ))}
+        {images.length > 1 && (
+          <div className="lightbox-dots">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                className={`lightbox-dot ${i === current ? 'active' : ''}`}
+                onClick={() => setCurrent(i)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <button className="lightbox-nav lightbox-next" onClick={goNext}>›</button>
+      <div className="lightbox-counter">{current + 1} / {images.length}</div>
+    </div>
+  )
+}
+
 function ProductModal({
   product,
   onClose,
@@ -95,48 +172,128 @@ function ProductModal({
   product: Product | null
   onClose: () => void
 }) {
+  const [activeImg, setActiveImg] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+
+  useEffect(() => {
+    if (product) {
+      setActiveImg(0)
+      setLightboxOpen(false)
+    }
+  }, [product])
+
+  useEffect(() => {
+    if (product && !lightboxOpen) {
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      if (!lightboxOpen) {
+        document.body.style.overflow = ''
+      }
+    }
+  }, [product, lightboxOpen])
+
   if (!product) return null
+
+  const images = product.images
+
   return (
-    <div
-      className={`modal-bg ${product ? 'open' : ''}`}
-      id="modal"
-      onClick={(e) => {
-        if ((e.target as HTMLElement).id === 'modal') onClose()
-      }}
-    >
-      <div className="modal">
-        <button className="modal-close" onClick={onClose}>
-          ✕
-        </button>
-        <img src={product.image} alt={product.name} className="modal-image" />
-        <h3>{product.name}</h3>
-        <div className="modal-cat">{product.cat}</div>
-        <div className="modal-price">
-          <small>ر.س</small> {product.price}
-        </div>
-        <p className="modal-desc">{product.desc}</p>
-        <div className="modal-actions">
-          <a
-            href={waLink(`السلام عليكم، أريد الاستفسار عن ${product.name} بسعر ${product.price} ريال سعودي`)}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-wa-big"
-            style={{ justifyContent: 'center' }}
-          >
-            💬 اطلبي عبر واتساب
-          </a>
-          <a
-            href={igLink}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-ig-big"
-            style={{ justifyContent: 'center' }}
-          >
-            📸 شاهدي المزيد على إنستغرام
-          </a>
+    <>
+      <div
+        className={`modal-bg ${product ? 'open' : ''}`}
+        id="modal"
+        onClick={(e) => {
+          if ((e.target as HTMLElement).id === 'modal') onClose()
+        }}
+      >
+        <div className="modal">
+          <button className="modal-close" onClick={onClose}>
+            ✕
+          </button>
+          <div className="modal-gallery">
+            <div className="modal-main-img" onClick={() => setLightboxOpen(true)}>
+              {images.map((img, i) => (
+                <img
+                  key={img + i}
+                  src={img}
+                  alt={product.name}
+                  className={`modal-image ${i === activeImg ? 'active' : ''}`}
+                />
+              ))}
+              <div className="modal-zoom-hint">🔍 اضغطي لعرض أكبر</div>
+              {images.length > 1 && (
+                <>
+                  <button
+                    className="modal-img-nav modal-img-prev"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setActiveImg((i) => (i - 1 + images.length) % images.length)
+                    }}
+                  >
+                    ›
+                  </button>
+                  <button
+                    className="modal-img-nav modal-img-next"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setActiveImg((i) => (i + 1) % images.length)
+                    }}
+                  >
+                    ‹
+                  </button>
+                </>
+              )}
+            </div>
+            {images.length > 1 && (
+              <div className="modal-thumbs">
+                {images.map((img, i) => (
+                  <button
+                    key={img + i}
+                    className={`modal-thumb ${i === activeImg ? 'active' : ''}`}
+                    onClick={() => setActiveImg(i)}
+                  >
+                    <img src={img} alt="" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <h3>{product.name}</h3>
+          <div className="modal-cat">{product.cat}</div>
+          <div className="modal-price">
+            <small>ر.س</small> {product.price}
+          </div>
+          <p className="modal-desc">{product.desc}</p>
+          <div className="modal-actions">
+            <a
+              href={waLink(`السلام عليكم، أريد الاستفسار عن ${product.name} بسعر ${product.price} ريال سعودي`)}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-wa-big"
+              style={{ justifyContent: 'center' }}
+            >
+              💬 اطلبي عبر واتساب
+            </a>
+            <a
+              href={igLink}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ig-big"
+              style={{ justifyContent: 'center' }}
+            >
+              📸 شاهدي المزيد على إنستغرام
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+      {lightboxOpen && (
+        <Lightbox
+          images={images}
+          startIndex={activeImg}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
+    </>
   )
 }
 
@@ -242,6 +399,7 @@ function ContactForm() {
 
 function LujainDesign() {
   const [activeFilter, setActiveFilter] = useState('الكل')
+  const [galleryLightbox, setGalleryLightbox] = useState<{ images: string[]; index: number } | null>(null)
 
   const filters = ['الكل', 'عبايات كلاسيك', 'عبايات مطرزة', 'عبايات سهرة', 'عبايات يومية']
   const filterLabels: Record<string, string> = {
@@ -450,15 +608,32 @@ function LujainDesign() {
             <h2 className="section-title">أعمالنا تتحدث عنّا</h2>
             <div className="section-rule" />
           </div>
-          <div className="gallery-grid">
-            <div className="g-item"><img src="/abaya-1.jpg" alt="عباءة" className="g-img" /></div>
-            <div className="g-item"><img src="/abaya-2.jpg" alt="عباءة" className="g-img" /></div>
-            <div className="g-item"><img src="/abaya-3.jpg" alt="عباءة" className="g-img" /></div>
-            <div className="g-item"><img src="/abaya-2.jpg" alt="عباءة" className="g-img" /></div>
-            <div className="g-item"><img src="/abaya-1.jpg" alt="عباءة" className="g-img" /></div>
-          </div>
+          {(() => {
+            const galleryImages = ['/abaya-1.jpg', '/abaya-2.jpg', '/abaya-3.jpg', '/abaya-2.jpg', '/abaya-1.jpg']
+            return (
+              <div className="gallery-grid">
+                {galleryImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="g-item"
+                    onClick={() => setGalleryLightbox({ images: galleryImages, index: i })}
+                  >
+                    <img src={img} alt="عباءة" className="g-img" />
+                    <div className="g-zoom-icon">🔍</div>
+                  </div>
+                ))}
+              </div>
+            )
+          })()}
         </div>
       </section>
+      {galleryLightbox && (
+        <Lightbox
+          images={galleryLightbox.images}
+          startIndex={galleryLightbox.index}
+          onClose={() => setGalleryLightbox(null)}
+        />
+      )}
 
       {/* CONTACT */}
       <section className="contact" id="contact">
