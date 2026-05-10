@@ -437,6 +437,8 @@ function LujainDesign() {
         <div className="ornament orn2" />
         <div className="ornament orn3" />
         <div className="ornament orn4" />
+        <div className="ornament orn5" />
+        <div className="ornament orn6" />
         <div className="hero-inner">
           <div className="hero-badge">✦ بوتيك عبايات فاخرة · عدن ✦</div>
           <div className="hero-brand">Lujain</div>
