@@ -63,7 +63,7 @@ nav {
 
 .logo-wrap { display: flex; align-items: center; gap: 10px; }
 .logo-icon { height: 42px; width: 42px; object-fit: contain; }
-.logo-text { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--white); letter-spacing: 1px; }
+.logo-text { font-family: 'Great Vibes', cursive; font-size: 28px; font-weight: 400; color: var(--white); letter-spacing: 1px; }
 
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { color: var(--white-dim); text-decoration: none; font-size: 12px; letter-spacing: 2.5px; font-weight: 400; cursor: pointer; transition: color .3s; text-transform: uppercase; }
@@ -117,7 +117,7 @@ nav {
 
 .hero-inner { position: relative; z-index: 2; max-width: 780px; }
 .hero-badge { display: inline-block; border: 1px solid var(--gold-border); color: var(--gold); font-size: 9px; letter-spacing: 7px; text-transform: uppercase; padding: 8px 24px; margin-bottom: 36px; animation: fadeUp .7s ease .1s both; background: linear-gradient(135deg, transparent 0%, rgba(176,176,176,.04) 50%, transparent 100%); }
-.hero-brand { font-family: 'Playfair Display', serif; font-size: clamp(52px, 8vw, 96px); color: var(--white); line-height: 1.2; margin-bottom: 6px; animation: fadeUp .7s ease .25s both; font-weight: 700; }
+.hero-brand { font-family: 'Great Vibes', cursive; font-size: clamp(60px, 10vw, 120px); color: var(--white); line-height: 1.2; margin-bottom: 6px; animation: fadeUp .7s ease .25s both; font-weight: 400; }
 .hero-brand-sub { font-family: 'Tajawal', sans-serif; font-size: 11px; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; animation: fadeUp .7s ease .35s both; }
 .hero-divider { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 32px; animation: fadeUp .7s ease .45s both; }
 .hero-divider span { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
@@ -148,6 +148,7 @@ nav {
   margin: 0 auto 56px;
   position: relative;
 }
+.brand-name { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: 1.3em; }
 .section-rule::before,
 .section-rule::after {
   content: '';
@@ -432,7 +433,7 @@ footer::before {
 }
 .footer-logo { display: flex; align-items: center; gap: 10px; }
 .footer-logo-icon { height: 36px; width: 36px; object-fit: contain; }
-.footer-logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: 1px; }
+.footer-logo-text { font-family: 'Great Vibes', cursive; font-size: 24px; font-weight: 400; color: var(--white); letter-spacing: 1px; }
 .footer-copy { font-size: 11px; color: rgba(232,234,234,.35); letter-spacing: 2px; text-align: center; }
 .footer-socials { display: flex; gap: 12px; }
 .social-link { width: 36px; height: 36px; border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; color: var(--white-dim); text-decoration: none; font-size: 14px; transition: all .3s; }
