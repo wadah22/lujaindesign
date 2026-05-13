@@ -62,8 +62,7 @@ nav {
 }
 
 .logo-wrap { display: flex; flex-direction: column; align-items: flex-start; }
-.logo-en { font-family: 'Great Vibes', cursive; font-size: 32px; color: var(--white); line-height: 1; }
-.logo-sub { font-family: 'Tajawal', sans-serif; font-size: 9px; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-top: -2px; }
+.logo-img { height: 48px; width: auto; object-fit: contain; }
 
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { color: var(--white-dim); text-decoration: none; font-size: 12px; letter-spacing: 2.5px; font-weight: 400; cursor: pointer; transition: color .3s; text-transform: uppercase; }
@@ -298,8 +297,7 @@ nav {
   pointer-events: none;
 }
 .about-frame-inner { position: absolute; inset: 12px; border: 1px solid rgba(212,175,55,.15); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; background: linear-gradient(160deg, var(--black3) 0%, rgba(31,31,31,.8) 100%); }
-.about-logo-text { font-family: 'Great Vibes', cursive; font-size: 40px; color: var(--gold); }
-.about-logo-sub { font-size: 9px; letter-spacing: 6px; color: rgba(212,175,55,.6); text-transform: uppercase; }
+.about-logo-img { max-width: 200px; width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
 .about-text { flex: 1; min-width: 280px; }
 .about-text .section-eyebrow, .about-text .section-title, .about-text p { text-align: right; }
 .about-text p { color: var(--white-dim); line-height: 2; font-size: 15px; font-weight: 300; margin-bottom: 20px; }
@@ -431,7 +429,8 @@ footer::before {
     radial-gradient(ellipse 50% 100% at 50% 0%, rgba(212,175,55,.03) 0%, transparent 60%);
   pointer-events: none;
 }
-.footer-logo { font-family: 'Great Vibes', cursive; font-size: 28px; color: var(--gold); }
+.footer-logo { display: flex; justify-content: center; }
+.footer-logo-img { height: 40px; width: auto; object-fit: contain; }
 .footer-copy { font-size: 11px; color: rgba(232,227,217,.35); letter-spacing: 2px; text-align: center; }
 .footer-socials { display: flex; gap: 12px; }
 .social-link { width: 36px; height: 36px; border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; color: var(--white-dim); text-decoration: none; font-size: 14px; transition: all .3s; }
