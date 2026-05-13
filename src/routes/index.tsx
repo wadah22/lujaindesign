@@ -675,7 +675,7 @@ function LujainDesign() {
       {/* FOOTER */}
       <footer>
         <div className="footer-logo">Lujain Design</div>
-        <div className="footer-copy">© 2025 لجين ديزاين · عدن · جميع الحقوق محفوظة</div>
+        <div className="footer-copy">© 2026 لجين ديزاين · عدن · جميع الحقوق محفوظة</div>
         <div className="footer-socials">
           <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noreferrer" className="social-link">💬</a>
           <a href={igLink} target="_blank" rel="noreferrer" className="social-link">📸</a>

@@ -1,0 +1,2 @@
+# Redirect Netlify subdomain to custom domain
+https://lujaindesign.netlify.app/* https://lujain.fashion/:splat 301!
