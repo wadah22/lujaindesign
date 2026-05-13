@@ -38,8 +38,8 @@ export const createCheckoutSession = createServerFn({
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.SITE_URL ?? 'http://localhost:3000'}/checkout/success`,
-      cancel_url: `${process.env.SITE_URL ?? 'http://localhost:3000'}/checkout/cancel`,
+      success_url: `${process.env.URL || process.env.SITE_URL || 'http://localhost:3000'}/checkout/success`,
+      cancel_url: `${process.env.URL || process.env.SITE_URL || 'http://localhost:3000'}/checkout/cancel`,
     })
 
     return session.url
