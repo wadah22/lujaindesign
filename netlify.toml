@@ -5,3 +5,16 @@
   command = "npm run dev"
   targetPort = 3000
   port = 8888
+
+[[redirects]]
+  from = "https://lujaindesign.netlify.app/*"
+  to = "https://lujain.fashion/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://lujaindesign.netlify.app/*"
+  to = "https://lujain.fashion/:splat"
+  status = 301
+  force = true
+
