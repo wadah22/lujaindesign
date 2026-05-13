@@ -415,7 +415,7 @@ function LujainDesign() {
       {/* NAV */}
       <nav>
         <div className="logo-wrap">
-          <img src="/logo-dark.jpeg" alt="Lujain Design" className="logo-img" />
+          <img src="/logo-dark.jpeg" alt="لجين" className="logo-img" />
         </div>
         <ul className="nav-links">
           <li><a onClick={() => goTo('#categories')}>التصنيفات</a></li>
@@ -440,8 +440,8 @@ function LujainDesign() {
         <div className="ornament orn6" />
         <div className="hero-inner">
           <div className="hero-badge">✦ بوتيك عبايات فاخرة · عدن ✦</div>
-          <div className="hero-brand">Lujain</div>
-          <div className="hero-brand-sub">D E S I G N</div>
+          <div className="hero-brand">لجين</div>
+          <div className="hero-brand-sub">S I L V E R &nbsp; I S &nbsp; M Y &nbsp; S I G N A T U R E</div>
           <div className="hero-divider">
             <span />
             <span>◆</span>
@@ -549,18 +549,18 @@ function LujainDesign() {
           <div className="about-visual">
             <div className="about-frame">
               <div className="about-frame-inner">
-                <img src="/logo-light.jpeg" alt="Lujain Design" className="about-logo-img" />
+                <img src="/logo-light.jpeg" alt="لجين" className="about-logo-img" />
               </div>
             </div>
           </div>
           <div className="about-text">
             <div className="section-eyebrow">✦ قصتنا ✦</div>
             <h2 className="section-title">
-              لجين ديزاين<br />
-              <small style={{ fontSize: '.55em', color: 'var(--gold)' }}>أناقة صُنعت بحبٍّ</small>
+              لجين<br />
+              <small style={{ fontSize: '.55em', color: 'var(--gold)' }}>Silver is my signature</small>
             </h2>
             <div className="section-rule right" />
-            <p>لجين ديزاين بوتيك متخصص في تصميم وخياطة العبايات الفاخرة في مدينة عدن، نُقدّم لكِ تصاميم حصرية تجمع بين الأصالة والحداثة.</p>
+            <p>لجين بوتيك متخصص في تصميم وخياطة العبايات الفاخرة في مدينة عدن، نُقدّم لكِ تصاميم حصرية تجمع بين الأصالة والحداثة.</p>
             <p>كل قطعة تُصنع بعناية فائقة واختيار دقيق للأقمشة الفاخرة، لتضمن لكِ إطلالة مميزة في كل مناسبة سواء كانت يومية أو رسمية أو سهرة.</p>
             <div className="about-highlights">
               <div className="highlight">
@@ -672,8 +672,8 @@ function LujainDesign() {
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-logo"><img src="/logo-dark.jpeg" alt="Lujain Design" className="footer-logo-img" /></div>
-        <div className="footer-copy">© 2026 لجين ديزاين · عدن · جميع الحقوق محفوظة</div>
+        <div className="footer-logo"><img src="/logo-dark.jpeg" alt="لجين" className="footer-logo-img" /></div>
+        <div className="footer-copy">© 2026 لجين · عدن · جميع الحقوق محفوظة</div>
         <div className="footer-socials">
           <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noreferrer" className="social-link">💬</a>
           <a href={igLink} target="_blank" rel="noreferrer" className="social-link">📸</a>
