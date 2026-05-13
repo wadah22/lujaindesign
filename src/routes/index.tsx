@@ -415,8 +415,7 @@ function LujainDesign() {
       {/* NAV */}
       <nav>
         <div className="logo-wrap">
-          <div className="logo-en">Lujain</div>
-          <div className="logo-sub">Design · عدن</div>
+          <img src="/logo-dark.jpeg" alt="Lujain Design" className="logo-img" />
         </div>
         <ul className="nav-links">
           <li><a onClick={() => goTo('#categories')}>التصنيفات</a></li>
@@ -550,8 +549,7 @@ function LujainDesign() {
           <div className="about-visual">
             <div className="about-frame">
               <div className="about-frame-inner">
-                <div className="about-logo-text">Lujain</div>
-                <div className="about-logo-sub">Design</div>
+                <img src="/logo-light.jpeg" alt="Lujain Design" className="about-logo-img" />
               </div>
             </div>
           </div>
@@ -674,7 +672,7 @@ function LujainDesign() {
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-logo">Lujain Design</div>
+        <div className="footer-logo"><img src="/logo-dark.jpeg" alt="Lujain Design" className="footer-logo-img" /></div>
         <div className="footer-copy">© 2026 لجين ديزاين · عدن · جميع الحقوق محفوظة</div>
         <div className="footer-socials">
           <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noreferrer" className="social-link">💬</a>
