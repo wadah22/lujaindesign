@@ -2,8 +2,8 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import '../styles.css'
 
 const SITE_URL = 'https://lujain.fashion'
-const SITE_TITLE = 'Lujain Design | لجين ديزاين'
-const SITE_DESC = 'بوتيك لجين ديزاين — تصاميم عبايات فاخرة وحصرية في عدن، اليمن. أناقة تُعبّر عنكِ.'
+const SITE_TITLE = 'لجين | Lujain'
+const SITE_DESC = 'لجين — تصاميم عبايات فاخرة وحصرية في عدن، اليمن. Silver is my signature.'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       { property: 'og:description', content: SITE_DESC },
       { property: 'og:image', content: `${SITE_URL}/abaya-1.jpg` },
       { property: 'og:locale', content: 'ar_YE' },
-      { property: 'og:site_name', content: 'Lujain Design' },
+      { property: 'og:site_name', content: 'لجين' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: SITE_TITLE },
       { name: 'twitter:description', content: SITE_DESC },
